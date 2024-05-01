@@ -1,13 +1,13 @@
 {% set name = "google-re2" %}
-{% set version = "1.1" %}
+{% set version = "1.1.20240501" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/google-re2-{{ version }}.tar.gz
-  sha256: d3a9467ee52b46ac77ca928f6d0cbeaccfd92f03ca0f0f65b9df6a95184f3a1c
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 1a291ae834ec4230c71671b0162999ec76c0b88fbd33ab4d362a07fa9a7d37b4
 
 build:
   skip: true  # [win]
@@ -20,6 +20,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
