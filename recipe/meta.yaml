@@ -1,5 +1,5 @@
 {% set name = "google-re2" %}
-{% set version = "1.1.20240501" %}
+{% set version = "1.1.20240601" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 1a291ae834ec4230c71671b0162999ec76c0b88fbd33ab4d362a07fa9a7d37b4
+  sha256: 3187f68855307754d49f398e583853d5b08d783d3fe662f6916b999075f7e095
 
 build:
   skip: true  # [win]
