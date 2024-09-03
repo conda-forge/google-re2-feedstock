@@ -11,8 +11,8 @@ source:
 
 build:
   skip: true  # [win]
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   build:
@@ -27,6 +27,7 @@ requirements:
     - pybind11
     - pip
     - re2
+    - setuptools
   run:
     - python
   run_constrained:
