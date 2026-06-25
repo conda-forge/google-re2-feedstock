@@ -14,8 +14,11 @@ source:
 
 build:
   number: 1
-  #skip: win
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - if: win
+      then: set "CXXFLAGS=%CXXFLAGS% /std:c++17" && ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    - if: unix
+      then: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
