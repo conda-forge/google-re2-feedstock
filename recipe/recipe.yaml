@@ -17,7 +17,9 @@ build:
   script:
     - if: win
       #then: set "CXXFLAGS=%CXXFLAGS% /std:c++17" && ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-      then: cl /nologo /EP -dM - < nul
+      then: |
+        cl /EHsc check.cpp 
+        check.exe
     - if: unix
       then: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
