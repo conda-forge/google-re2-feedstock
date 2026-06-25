@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
 context:
@@ -13,9 +14,11 @@ source:
   sha256: 1db14a292ee8303b91e91e7c37e05ac17d3c467f29416c79ac70a78be3e65bda
 
 build:
-  number: 1
-  skip: win
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 2
+  script:
+    env:
+      CL: "/std:c++17"
+    content: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
