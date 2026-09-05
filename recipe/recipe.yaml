@@ -14,7 +14,7 @@ source:
   sha256: 1db14a292ee8303b91e91e7c37e05ac17d3c467f29416c79ac70a78be3e65bda
 
 build:
-  number: 2
+  number: 3
   script:
     env:
       CL: "/std:c++17"
@@ -23,11 +23,10 @@ build:
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: pybind11
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - pybind11
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
